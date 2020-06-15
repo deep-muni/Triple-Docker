@@ -1,0 +1,14 @@
+{
+  "name": "triple-docker",
+  "version": "1.0.0",
+  "description": "Triple Docker Example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Deep Muni",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
