@@ -9,6 +9,7 @@ const registerUser = (req, res) => {
             res.json({status: false, message: 'Issue'});
         }else{
             if(result.length === 1){
+                console.log({status: false, message: 'User already exist'});
                 res.json({status: false, message: 'User already exist'});
             }else{
                 const query = "INSERT INTO users(email, user_name, pass)" +
@@ -19,6 +20,7 @@ const registerUser = (req, res) => {
                         console.log(err);
                         res.json({status: false, message: 'Issue'});
                     } else {
+                        console.log({status: true, message: 'User added'});
                         res.json({status: true, message: 'User added'});
                     }
                 });
