@@ -30,6 +30,7 @@ class Login extends Component {
                     this.setState({
                         main : {status: false, text: ''}
                     });
+                    this.props.update();
                 },2500);
             });
     }

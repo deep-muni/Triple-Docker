@@ -254,7 +254,7 @@ class Register extends Component {
                     </div>
                     <div className="input-section">
                         <label htmlFor="registerCPass">Confirm Password</label>
-                        <input type="password" id="registerCPass" className="inp"
+                        <input type="password" id="registerCPass" className="inp inp_register"
                                onChange={this.validate}/>
                         {this.state.cpass.status ? <div className="error">{this.state.cpass.text}</div> : null}
                     </div>

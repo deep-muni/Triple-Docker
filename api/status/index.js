@@ -1,28 +1,21 @@
 const express = require('express');
-const sql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
+const router = require('./arch/route/status');
 
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
 
-const con = sql.createConnection({
-    host: "localhost", user: "root", password: "admin123", database: "tripleDocker"
-});
-
-con.connect(function(err) {
-    if(err){
-        throw err;
-    }else{
-        console.log("Database connection successful");
-    }
-});
-
 app.get('/', function (req, res) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.send("Status");
 });
+
+app.use('/status', router);
 
 app.listen(3003, function () {
     console.log("Status Port: 3003");
