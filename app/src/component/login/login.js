@@ -8,7 +8,7 @@ class Login extends Component {
         this.state = {
             email: {status: false, text: ''},
             pass: {status: false, text: ''},
-            main: {status: false, text: ''}
+            main: {status: false, text: '', success: false}
         }
 
         this.login = this.login.bind(this);
@@ -24,14 +24,22 @@ class Login extends Component {
         })
             .then(res => {
                 this.setState({
-                    main : {status: true, text: res.data.message}
+                    main : {status: true, text: res.data.message, success: res.data.status}
                 });
                 setTimeout(() => {
+
+                    const show = this.state.main.success;
                     this.setState({
-                        main : {status: false, text: ''}
+                        main : {status: false, text: '', success: false}
                     });
-                    this.props.update();
-                },2500);
+
+                    if(show){
+                        this.props.update();
+                        this.props.showUser(document.getElementById('loginEmail').value);
+                    }
+
+                    this.makeEmpty();
+                },1000);
             });
     }
 
@@ -89,7 +97,6 @@ class Login extends Component {
             },2500);
         }else{
             this.login();
-            this.makeEmpty();
         }
     }
 
