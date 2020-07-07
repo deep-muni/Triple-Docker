@@ -40,7 +40,11 @@ class Register extends Component {
     }
 
     async register() {
-        await axios.post('http://localhost:3002/register', {
+
+        // const url = 'http://localhost:3002/register';
+        const url = 'http://deepmuni-1.eastus.azurecontainer.io:3002/register';
+
+        await axios.post(url, {
             email: document.getElementById('registerEmail').value,
             name: document.getElementById('registerName').value,
             password: document.getElementById('registerPass').value

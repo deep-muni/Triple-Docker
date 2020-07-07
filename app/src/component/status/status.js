@@ -15,7 +15,10 @@ class Status extends Component {
     }
 
     async getStatus() {
-        await axios.get('http://localhost:3003/status')
+        // const url = 'http://localhost:3003/status';
+        const url = "http://deepmuni-2.eastus.azurecontainer.io:3003/status";
+
+        await axios.get(url)
             .then(res => {
                 this.setState({
                     users: res.data
@@ -24,7 +27,11 @@ class Status extends Component {
     }
 
     async logout(){
-        await axios.get('http://localhost:3003/status/logout')
+
+        // const url = 'http://localhost:3003/logout';
+        const url = "http://deepmuni-2.eastus.azurecontainer.io:3003/logout";
+
+        await axios.get(url)
             .then(res => {
                 this.getStatus();
             });
